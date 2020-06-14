@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "yamlprocessor"
+    }
+  },
+  "defaultProject": "yamlprocessor",
+  "cli": {
+    "analytics": false
+  }
 }
