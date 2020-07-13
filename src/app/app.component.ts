@@ -2,84 +2,19 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { of } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import * as myGlobals from './app.schemasetup';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent{
+
+
   form = new FormGroup({});
   model = {};
-  fields: FormlyFieldConfig[] = [
-    { template: ' <div class="py-3 text-center"><h4>Header Validations</h4></div>' },
-    {
-      key: 'header_avail',
-      type: 'select',
-      templateOptions: {
-        label: 'Header Presense',
-        required: true,
-        options: [
-          { label: 'True', value: 'true' },
-          { label: 'False', value: 'false' }
-        ]
-      }
-    },
-    {
-      key: 'com_header_value',
-      type: 'input',
-      templateOptions: {
-        label: 'Header Value',
-        placeholder: 'Enter 10,20',
-        required: true,
-      }
-    },
-    {
-      key: 'row_length',
-      type: 'input',
-      templateOptions: {
-        label: 'Row Length',
-        placeholder: 'Enter 250 etc',
-        required: true,
-      }
-    },
-    { template: '<hr/>' },
-    { template: ' <div class="py-3 text-center"><h4>CDC Queries</h4></div>' },
-    {
-      key: 'com_cdc_query',
-      type: 'textarea',
-      templateOptions: {
-        label: 'CDC Query',
-        placeholder: 'Textarea placeholder',
-        description: 'Select * from tmp',
-        required: true,
-      }
-    },
-    {
-      key: 'com_cdcbrz_query',
-      type: 'textarea',
-      templateOptions: {
-        label: 'Bronze Query',
-        placeholder: 'Textarea placeholder',
-        description: 'Select * from bronze table',
-        required: true,
-      }
-    },
-    { template: '<hr/>' },
-    { template: ' <div class="py-3 text-center"><h4>Trailer Validations</h4></div>' },
-    {
-      key: 'com_trailer_validation',
-      type: 'select',
-      templateOptions: {
-        label: 'Trailer Validation',
-        placeholder: 'Select placeholder',
-        required: true,
-        options: [
-          { label: 'True', value: 'true' },
-          { label: 'False', value: 'false' }
-        ]
-      }
-    }
-  ];
+  fields: FormlyFieldConfig[] = myGlobals.schemafields;
 
   onSubmit() {
     if (this.form.valid) {
